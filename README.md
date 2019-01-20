@@ -1,4 +1,4 @@
-# MFRC522-exlixir
+# MFRC522-elixir
 
 ## Installation
 
@@ -8,7 +8,7 @@ by adding `mfrc522` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:mfrc522, git: "https://github.com/brunosantanaa/MFRC522-elixir.git", tag: "0.1.0"}
+    {:mfrc522, git: "https://github.com/brunosantanaa/MFRC522-elixir.git"}
   ]
 end
 ```
