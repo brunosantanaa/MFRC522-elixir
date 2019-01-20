@@ -141,7 +141,6 @@ defmodule MFRC522 do
   end
 
   def handle_cast(:read_mifare, state) do
-    Logger.warn("Leitura do card")
     GenServer.cast(__MODULE__, {:read_progress, true})
     {:ok, uid} = anticoll(state[:spi])
     send(state.parent, {:mfrc522, uid})

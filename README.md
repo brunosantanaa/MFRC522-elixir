@@ -1,6 +1,4 @@
-# MFRC522
-
-**TODO: Add description**
+# MFRC522-exlixir
 
 ## Installation
 
@@ -15,8 +13,22 @@ def deps do
 end
 ```
 
+## Reader
+
+```elixir
+iex> MFRC522.start_link
+iex> MFRC522.mode(:reader)
+```
+
+Place the RFID TAG next to the RC522 reader.
+
+```elixir
+iex> flush()
+{:mfrc522, [123, 123, 123, 123, 123]}
+```
+
+
+
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/mfrc522](https://hexdocs.pm/mfrc522).
-
-# MFRC522-exlixir
