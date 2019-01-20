@@ -177,7 +177,8 @@ defmodule MFRC522 do
 
     antenna_on(state[:spi])
   end
-  def request(spi, req_mode) do
+
+  defp request(spi, req_mode) do
     write_register(spi, @bit_framing_reg, 0x07)
     {status, _back_data, back_bits} = to_card(spi, @pcd_transceive, [req_mode])
 
@@ -306,18 +307,18 @@ defmodule MFRC522 do
       end
   end
 
-  def reset(spi) do
+  defp reset(spi) do
     write_register(spi, @command_reg, @pcd_reset_phase)
   end
 
-  def antenna_on(spi) do
+  defp antenna_on(spi) do
     value = read_register(spi, @tx_control_reg)
     if (bnot(value &&& 0x03) != 0) do
       set_bit_mask(spi, @tx_control_reg, 0x03)
     end
   end
 
-  def antenna_off(spi) do
+  defp antenna_off(spi) do
     clear_bit_mask(spi, @tx_control_reg, 0x03)
   end
 
