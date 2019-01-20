@@ -1,18 +1,5 @@
 # MFRC522-elixir
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mfrc522` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:mfrc522, git: "https://github.com/brunosantanaa/MFRC522-elixir.git"}
-  ]
-end
-```
-
 ## Reader
 
 ```elixir
@@ -27,6 +14,19 @@ iex> flush()
 {:mfrc522, [123, 123, 123, 123, 123]}
 ```
 
+
+## Installation
+
+If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+by adding `mfrc522` to your list of dependencies in `mix.exs`:
+
+```elixir
+def deps do
+  [
+    {:mfrc522, git: "https://github.com/brunosantanaa/MFRC522-elixir.git"}
+  ]
+end
+```
 
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
