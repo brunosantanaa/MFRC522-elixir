@@ -143,7 +143,9 @@ defmodule MFRC522 do
   def handle_cast(:read_mifare, state) do
     GenServer.cast(__MODULE__, {:read_progress, true})
     {:ok, uid} = anticoll(state[:spi])
-    send(state.parent, {:mfrc522, uid})
+    [bit_xor | uid_] = uid |> Enum.reverse()
+
+    if (xor_list(uid_) == bit_xor), do: send(state.parent, {:mfrc522, uid_})
     {:noreply, state}
   end
 
@@ -159,9 +161,18 @@ defmodule MFRC522 do
     end
   end
 
+  defp xor_list(list) do
+    if (length(list) >= 2) do
+      {ini, fim} = list |> Enum.split(2)
+      xor_list([Enum.at(ini, 0) ^^^ Enum.at(ini, 1)] ++ fim)
+    else
+      Enum.at(list, 0)
+    end
+  end
   defp reader_worker(state) do
     unless state.progress, do: Process.send_after(__MODULE__, :reader, 100)
   end
+
   defp initialize_(state) do
     GPIO.write(state[:rst], 1)
 
